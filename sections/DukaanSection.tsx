@@ -2,105 +2,94 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useCursor } from '../context/CursorContext';
 import BackgroundVideo from '../components/BackgroundVideo';
-import VideoModal from '../components/VideoModal';
 import HoverVideoCard from '../components/HoverVideoCard';
 
 const DukaanSection: React.FC = () => {
   const { setCursorType } = useCursor();
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Real Asset ID provided by user
-  const MUX_PLAYBACK_ID = "xtd5w66yBZEaftQzkoWAUCa9kETQECgpYmIm2s4UZZA";
+  // Using the real Asset IDs provided
+  const ID_1 = "xtd5w66yBZEaftQzkoWAUCa9kETQECgpYmIm2s4UZZA";
+  const ID_2 = "5dY00pJUOdkxS8LyzKKYWfvr4QVPBRM00tcB800ew5A2LM";
+
+  const videoItems = [
+    { id: ID_1, title: "Work 01: The Beginning" },
+    { id: ID_2, title: "Work 02: Rising Action" },
+    { id: ID_1, title: "Work 03: Climax" },
+    { id: ID_2, title: "Work 04: Falling Action" },
+    { id: ID_1, title: "Work 05: Resolution" },
+    { id: ID_2, title: "Work 06: Epilogue" },
+  ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: (i: number) => ({
+    hidden: { opacity: 0, x: 50 },
+    visible: {
       opacity: 1,
-      y: 0,
+      x: 0,
       transition: {
-        delay: i * 0.2,
         duration: 0.8,
         ease: "easeOut"
       }
-    })
+    }
   };
 
   return (
-    <section className="h-screen w-[120vw] shrink-0 bg-[#121212] text-white relative flex items-center justify-center overflow-hidden">
+    <section className="h-screen w-[250vw] shrink-0 bg-[#121212] text-white relative flex items-center overflow-hidden">
 
       {/* Background Video Layer - Keep subtle background */}
-      <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
+      <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none fixed-bg-simulate">
         <BackgroundVideo
-          playbackId={MUX_PLAYBACK_ID}
+          playbackId={ID_1} // Use one as the ambient background
           className="w-full h-full grayscale"
         />
       </div>
 
       <div className="absolute top-12 left-12 z-10 pointer-events-none">
-        <h2 className="text-6xl font-['Oswald'] uppercase tracking-tight">Narrative Sequence</h2>
-        <p className="text-gray-400 mt-2 tracking-widest uppercase text-sm">Visual Storytelling & Composition</p>
+        <h2 className="text-6xl font-['Oswald'] uppercase tracking-tight">Video Showcase</h2>
+        <p className="text-gray-400 mt-2 tracking-widest uppercase text-sm">Selected Works & Edits</p>
       </div>
 
-      {/* Floating Elements - Video Showcases */}
-      <div className="relative w-full h-full max-w-7xl mx-auto flex items-center justify-center z-10">
+      {/* Horizontal Scroll Content */}
+      <motion.div
+        className="relative w-full h-full flex items-center px-[10vw] gap-[5vw]"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-20%" }}
+      >
+        {/* Connecting Line */}
+        <div className="absolute top-1/2 left-0 w-full h-[1px] bg-white/10 -z-10" />
 
-        {/* Connecting Lines (SVG) */}
-        <svg className="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-30">
-          <motion.path
-            initial={{ pathLength: 0 }}
-            whileInView={{ pathLength: 1 }}
-            transition={{ duration: 1.5, delay: 0.5 }}
-            d="M200,300 Q400,100 600,250 T900,400"
-            fill="none"
-            stroke="#666"
-            strokeWidth="1"
-            strokeDasharray="5,5"
-          />
-        </svg>
+        {videoItems.map((item, index) => (
+          <motion.div
+            key={index}
+            variants={itemVariants}
+            className="shrink-0"
+          >
+            <div className="flex flex-col gap-4">
+              <span className="text-sm font-mono text-gray-500">0{index + 1}</span>
+              <HoverVideoCard
+                playbackId={item.id}
+                title={item.title}
+                className="w-[40vw] md:w-[35vw] shadow-2xl border-white/10 hover:border-white/50 transition-colors duration-300"
+              />
+            </div>
+          </motion.div>
+        ))}
 
-        <motion.div
-          custom={0}
-          initial="hidden"
-          whileInView="visible"
-          variants={itemVariants}
-          className="absolute left-[10%] top-[25%]"
-        >
-          <HoverVideoCard
-            playbackId={MUX_PLAYBACK_ID}
-            title="Scene 1: The Establishment"
-            className="w-80 shadow-2xl border-white/20"
-          />
-        </motion.div>
+        {/* End Spacer */}
+        <div className="w-[10vw] shrink-0"></div>
 
-        <motion.div
-          custom={1}
-          initial="hidden"
-          whileInView="visible"
-          variants={itemVariants}
-          className="absolute left-[40%] top-[45%] z-20"
-        >
-          <HoverVideoCard
-            playbackId={MUX_PLAYBACK_ID}
-            title="Scene 2: The Conflict"
-            className="w-96 shadow-2xl border-white/20 scale-110"
-          />
-        </motion.div>
-
-        <motion.div
-          custom={2}
-          initial="hidden"
-          whileInView="visible"
-          variants={itemVariants}
-          className="absolute right-[15%] top-[20%]"
-        >
-          <HoverVideoCard
-            playbackId={MUX_PLAYBACK_ID}
-            title="Scene 3: Resolution"
-            className="w-72 shadow-2xl border-white/20"
-          />
-        </motion.div>
-
-      </div>
+      </motion.div>
 
     </section>
   );

@@ -46,7 +46,12 @@ const HoverVideoCard: React.FC<HoverVideoCardProps> = ({ playbackId, title, clas
                     loop
                     controls={false}
                     className="w-full h-full object-cover"
-                    style={{ aspectRatio: '16/9' }}
+                    style={{
+                        aspectRatio: '16/9',
+                        // @ts-ignore - Mux custom properties
+                        '--controls': 'none',
+                        '--media-controls': 'none',
+                    }}
                 />
 
                 {/* Overlay Title */}

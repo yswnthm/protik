@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import BackgroundVideo from '../components/BackgroundVideo';
-import VideoModal from '../components/VideoModal';
 
 const BoltSection: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Real Asset ID provided by user
   const MUX_PLAYBACK_ID = "5dY00pJUOdkxS8LyzKKYWfvr4QVPBRM00tcB800ew5A2LM";
@@ -16,7 +14,6 @@ const BoltSection: React.FC = () => {
         <BackgroundVideo
           playbackId={MUX_PLAYBACK_ID}
           className="w-full h-full shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"
-          onClick={() => setIsModalOpen(true)}
         />
 
         {/* Parallaxing Text Overlay */}
@@ -34,13 +31,6 @@ const BoltSection: React.FC = () => {
         <span className="text-[#FF4500] font-bold text-4xl font-['Oswald']">02</span>
         <span className="text-sm font-bold uppercase tracking-widest">Web Container Technology</span>
       </div>
-
-      <VideoModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        playbackId={MUX_PLAYBACK_ID}
-        title="Bolt.new Analysis"
-      />
     </section>
   );
 };
