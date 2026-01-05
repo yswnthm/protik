@@ -27,8 +27,8 @@ const ContactSection: React.FC = () => {
       </motion.a>
 
       <div className="absolute bottom-10 w-full px-12 flex justify-between text-xl font-bold uppercase tracking-widest">
-        <a href="#" className="hover:underline">Twitter / X</a>
-        <a href="#" className="hover:underline">Instagram</a>
+        <a href="mailto:hello@panorama.dev" className="hover:underline">Mail</a>
+        <a href="https://instagram.com/editorprotik" target="_blank" rel="noopener noreferrer" className="hover:underline">Instagram</a>
         <a href="#" className="hover:underline">Vimeo</a>
       </div>
 

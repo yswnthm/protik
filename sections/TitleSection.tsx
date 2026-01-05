@@ -5,17 +5,17 @@ const TitleSection: React.FC = () => {
   return (
     <section className="h-screen w-screen flex flex-col justify-center items-center relative overflow-hidden bg-[#F4F4F5] shrink-0">
       <div className="relative z-10 flex flex-col items-center">
-        <h1 className="text-[10vw] md:text-[14vw] leading-[0.8] font-bold uppercase text-transparent bg-clip-text bg-black select-none tracking-tighter">
+        <h1 className="text-[10vw] md:text-[14vw] leading-[0.8] font-bold text-transparent bg-clip-text bg-black select-none tracking-tighter text-center">
           <span
             className="block bg-clip-text text-transparent bg-cover bg-center"
             style={{
-              backgroundImage: "url('https://picsum.photos/1200/600?grayscale')",
+              backgroundImage: "url('/hero-texture.jpg')",
               WebkitBackgroundClip: 'text'
             }}
           >
-            PROTIK
+            Protik
           </span>
-          {/* <span className="block text-black">Kumar</span> - Removed for mononym branding */}
+          <span className="block text-black">Das</span>
         </h1>
         <div className="mt-8 flex items-center gap-4 overflow-hidden">
           <motion.div
@@ -30,7 +30,7 @@ const TitleSection: React.FC = () => {
             transition={{ delay: 0.7, duration: 0.8 }}
             className="text-xl md:text-2xl font-medium tracking-widest uppercase"
           >
-            Cinematic Video Editor & Colorist
+            CINEMATIC VIDEO EDITOR | GRAPHIC DESIGNER
           </motion.p>
           <motion.div
             initial={{ x: 100, opacity: 0 }}
