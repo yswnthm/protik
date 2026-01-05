@@ -8,8 +8,8 @@ const DukaanSection: React.FC = () => {
   const { setCursorType } = useCursor();
 
   // Using the real Asset IDs provided
-  const ID_1 = "xtd5w66yBZEaftQzkoWAUCa9kETQECgpYmIm2s4UZZA";
-  const ID_2 = "5dY00pJUOdkxS8LyzKKYWfvr4QVPBRM00tcB800ew5A2LM";
+  const ID_1 = "9aEkOhbdsVr4MU026KogdZ45y8HO3xEKVuIMAGWBwcUk";
+  const ID_2 = "mEVD4pAmowT01YXUQchxROSNdxAOy9Rk7WjUFjOC700Z8";
 
   const videoItems = [
     { id: ID_1, title: "Work 01: The Beginning" },
