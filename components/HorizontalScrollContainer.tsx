@@ -10,11 +10,11 @@ import ContactSection from '../sections/ContactSection';
 
 const HorizontalScrollContainer: React.FC = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
-  
+
   // We need to know the total width of the content to set the height of the scroll container
   // A simple way is to estimate or use a large number, but dynamic calculation is better.
   // Here we will use the hook to track the 'ghost' container.
-  
+
   const { scrollYProgress } = useScroll({
     target: scrollRef,
   });
@@ -26,31 +26,31 @@ const HorizontalScrollContainer: React.FC = () => {
   });
 
   // Calculate total width based on VWs
-  // 100 + 70 + 100 + 120 + 50 + 80 + 100 = 620vw
+  // Title (100) + Intro (70) + Bolt (100) + Dukaan (250) + Stack (50) + OpenSource (80) + Contact (100) = 750vw
   // We need to move the content left by (totalWidth - viewportWidth)
-  // i.e., 620vw - 100vw = 520vw
-  
-  const x = useTransform(smoothProgress, [0, 1], ["0%", "-520vw"]);
+  // i.e., 750vw - 100vw = 650vw
+
+  const x = useTransform(smoothProgress, [0, 1], ["0%", "-650vw"]);
 
   return (
     <>
       {/* The Ghost Container - controls the scrollable height */}
       {/* Height = Total horizontal width estimate (approx 6-7 screens worth of scroll) */}
-      <div ref={scrollRef} className="h-[650vh] w-full invisible absolute top-0 left-0 pointer-events-none"></div>
+      <div ref={scrollRef} className="h-[800vh] w-full invisible absolute top-0 left-0 pointer-events-none"></div>
 
       {/* The Fixed Viewport */}
       <div className="fixed top-0 left-0 h-screen w-screen overflow-hidden bg-[#F4F4F5]">
-        <motion.div 
-            style={{ x }} 
-            className="flex h-full w-max will-change-transform"
+        <motion.div
+          style={{ x }}
+          className="flex h-full w-max will-change-transform"
         >
-            <TitleSection />
-            <IntroSection />
-            <BoltSection />
-            <DukaanSection />
-            <StackSection />
-            <OpenSourceSection />
-            <ContactSection />
+          <TitleSection />
+          <IntroSection />
+          <BoltSection />
+          <DukaanSection />
+          <StackSection />
+          <OpenSourceSection />
+          <ContactSection />
         </motion.div>
       </div>
     </>

@@ -14,7 +14,7 @@ const ContactSection: React.FC = () => {
         onMouseEnter={() => setCursorType('link')}
         onMouseLeave={() => setCursorType('default')}
       >
-        <h2 className="text-[12vw] font-['Oswald'] font-bold uppercase leading-none group-hover:italic transition-all duration-500">
+        <h2 className="text-[12vw] font-['Oswald'] font-bold uppercase leading-none group-hover:-skew-x-12 transition-transform duration-500 origin-left will-change-transform">
           Email Me
         </h2>
         <motion.span
