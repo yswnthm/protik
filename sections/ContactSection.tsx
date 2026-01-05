@@ -29,7 +29,7 @@ const ContactSection: React.FC = () => {
       <div className="absolute bottom-10 w-full px-12 flex justify-between text-xl font-bold uppercase tracking-widest">
         <a href="mailto:hello@panorama.dev" className="hover:underline">Mail</a>
         <a href="https://instagram.com/editorprotik" target="_blank" rel="noopener noreferrer" className="hover:underline">Instagram</a>
-        <a href="#" className="hover:underline">Vimeo</a>
+        <a href="/" className="hover:underline">Home</a>
       </div>
 
       <div className="absolute top-10 w-full text-center opacity-50 text-sm uppercase tracking-widest">
