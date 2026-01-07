@@ -30,7 +30,7 @@ const TitleSection: React.FC = () => {
             transition={{ delay: 0.7, duration: 0.8 }}
             className="text-xl md:text-2xl font-medium tracking-widest uppercase"
           >
-            CINEMATIC VIDEO EDITOR | GRAPHIC DESIGNER
+            creative video editor | Cinematography
           </motion.p>
           <motion.div
             initial={{ x: 100, opacity: 0 }}

@@ -19,3 +19,8 @@
     *   `Space Grotesk` (Headings)
     *   `Inter` (Body)
     *   `JetBrains Mono` (Technical details/Monospace)
+
+## Testing
+*   **Test Runner:** Vitest - Fast, Vite-native unit test runner.
+*   **Testing Utilities:** React Testing Library - For testing React components in a way that resembles how they are used.
+*   **Environment:** jsdom - To simulate a browser environment for tests.
