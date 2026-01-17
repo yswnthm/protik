@@ -16,15 +16,7 @@ const BoltSection: React.FC = () => {
           className="w-full h-full shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"
         />
 
-        {/* Parallaxing Text Overlay */}
-        <motion.h2
-          initial={{ x: 200, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className="absolute -bottom-16 -left-10 text-[10vw] font-['Oswald'] text-black font-bold uppercase leading-none z-20 mix-blend-hard-light pointer-events-none"
-        >
-          BOLT.NEW
-        </motion.h2>
+
       </div>
 
       <div className="absolute top-12 right-12 flex flex-col items-end">
