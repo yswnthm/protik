@@ -41,10 +41,7 @@ const TitleSection: React.FC = () => {
         </div>
       </div>
 
-      {/* Decorative large faint text */}
-      <div className="absolute bottom-10 left-10 opacity-10 font-['Oswald'] text-9xl pointer-events-none">
-        PORTFOLIO
-      </div>
+
     </section>
   );
 };
