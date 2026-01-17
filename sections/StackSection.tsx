@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const StackSection: React.FC = () => {
   const [isPaused, setIsPaused] = useState(false);
-  const stack = ["PREMIERE PRO", "AFTER EFFECTS", "DAVINCI RESOLVE", "AVID MEDIA COMPOSER", "FINAL CUT PRO", "CINEMA 4D"];
+  const stack = ["DaVinci Resolve", "Figma", "Frame.io", "Audacity", "Notion"];
 
   return (
     <section className="h-screen w-[50vw] shrink-0 bg-[#F4F4F5] border-r-2 border-black flex items-center justify-center overflow-hidden relative">
