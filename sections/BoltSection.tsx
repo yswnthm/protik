@@ -8,7 +8,7 @@ const BoltSection: React.FC = () => {
   const MUX_PLAYBACK_ID = "5dY00pJUOdkxS8LyzKKYWfvr4QVPBRM00tcB800ew5A2LM";
 
   return (
-    <section className="h-screen w-screen shrink-0 relative bg-[#F4F4F5] flex items-center justify-center overflow-hidden">
+    <section className="h-screen w-screen shrink-0 relative bg-[#F4F4F5] flex items-center justify-start overflow-hidden">
 
       <div className="relative w-[80%] h-[70%]">
         <BackgroundVideo
