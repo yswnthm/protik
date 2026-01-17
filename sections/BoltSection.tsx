@@ -21,7 +21,7 @@ const BoltSection: React.FC = () => {
 
       <div className="absolute top-12 right-12 flex flex-col items-end">
         <span className="text-[#FF4500] font-bold text-4xl font-['Oswald']">02</span>
-        <span className="text-sm font-bold uppercase tracking-widest">Web Container Technology</span>
+        <span className="text-sm font-bold uppercase tracking-widest">Cinematic Storytelling</span>
       </div>
     </section>
   );
