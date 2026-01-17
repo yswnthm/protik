@@ -12,7 +12,7 @@ const StackSection: React.FC = () => {
       </div>
 
       <div
-        className="relative h-[80vh] w-full flex flex-col items-center justify-center perspective-[1000px]"
+        className="relative h-full w-full flex flex-col items-center justify-center perspective-[1000px]"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
@@ -39,7 +39,12 @@ const StackSection: React.FC = () => {
           </motion.div>
         </div>
 
-        <div className="absolute inset-0 bg-gradient-to-b from-[#F4F4F5] via-transparent to-[#F4F4F5] pointer-events-none z-10 h-full w-full"></div>
+        <div
+          className="absolute inset-0 pointer-events-none z-10"
+          style={{
+            background: 'linear-gradient(to bottom, #F4F4F5 0%, #F4F4F5 5%, transparent 25%, transparent 75%, #F4F4F5 95%, #F4F4F5 100%)'
+          }}
+        ></div>
       </div>
     </section>
   );
