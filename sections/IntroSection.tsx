@@ -6,13 +6,13 @@ const IntroSection: React.FC = () => {
   const { setCursorType } = useCursor();
 
   return (
-    <section className="h-screen w-[70vw] shrink-0 bg-[#F4F4F5] border-l-2 border-black flex flex-col justify-between p-8 md:p-16 relative overflow-hidden">
+    <section className="h-screen w-full lg:w-[70vw] shrink-0 bg-[#F4F4F5] border-l-2 border-black flex flex-col justify-between p-8 md:p-16 relative overflow-hidden">
       {/* Background Decor - Optional subtle gradient */}
       <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-b from-orange-100/50 to-transparent blur-3xl -z-10 pointer-events-none" />
 
       {/* Header / Number */}
       <div className="flex justify-between items-start">
-        <span className="text-black/10 font-['Oswald'] text-[10rem] leading-none -ml-4 -mt-8 select-none">
+        <span className="text-black/10 font-['Oswald'] text-8xl md:text-[10rem] leading-none -ml-4 -mt-8 select-none">
           01
         </span>
 

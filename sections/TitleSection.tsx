@@ -3,9 +3,9 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 
 const TitleSection: React.FC = () => {
   return (
-    <section className="h-screen w-screen flex flex-col justify-center items-center relative overflow-hidden bg-[#F4F4F5] shrink-0">
+    <section className="h-screen w-full lg:w-screen flex flex-col justify-center items-center relative overflow-hidden bg-[#F4F4F5] shrink-0">
       <div className="relative z-10 flex flex-col items-center">
-        <h1 className="text-[18vw] leading-[0.8] font-['Anton'] text-transparent bg-clip-text bg-black select-none uppercase text-center flex flex-col items-center">
+        <h1 className="text-6xl md:text-[18vw] leading-[0.8] font-['Anton'] text-transparent bg-clip-text bg-black select-none uppercase text-center flex flex-col items-center">
           <span
             className="block bg-clip-text text-transparent bg-cover bg-center"
             style={{
