@@ -33,7 +33,7 @@ const ContactSection: React.FC = () => {
       </div>
 
       <div className="absolute top-10 w-full text-center opacity-50 text-sm uppercase tracking-widest">
-        End of Exhibition
+        Made with Solicate
       </div>
 
     </section>
