@@ -11,7 +11,7 @@ const ContactSection: React.FC = () => {
     <section className="h-screen w-[100vw] shrink-0 bg-[#FF4500] text-white flex flex-col justify-center items-center relative overflow-hidden">
 
       <motion.a
-        href="mailto:hello@panorama.dev"
+        href="mailto:dasprotik485@gmail.com"
         className="group relative flex items-center gap-8"
         onMouseEnter={() => setCursorType('link')}
         onMouseLeave={() => setCursorType('default')}
@@ -29,7 +29,7 @@ const ContactSection: React.FC = () => {
       </motion.a>
 
       <div className="absolute bottom-10 w-full px-12 flex justify-between text-xl font-bold uppercase tracking-widest">
-        <a href="mailto:hello@panorama.dev" className="hover:underline">Mail</a>
+        <a href="mailto:dasprotik485@gmail.com" className="hover:underline">Mail</a>
         <a href="https://instagram.com/editorprotik" target="_blank" rel="noopener noreferrer" className="hover:underline">Instagram</a>
         <a href="/" className="hover:underline">Home</a>
       </div>
