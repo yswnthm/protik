@@ -8,16 +8,17 @@ interface HoverVideoCardProps {
     title: string;
     className?: string;
     style?: React.CSSProperties;
+    onClick?: () => void;
 }
 
-const HoverVideoCard: React.FC<HoverVideoCardProps> = ({ playbackId, title, className, style }) => {
+const HoverVideoCard: React.FC<HoverVideoCardProps> = ({ playbackId, title, className, style, onClick }) => {
     const { setCursorType } = useCursor();
     const playerRef = useRef<MuxPlayerRefAttributes>(null);
     const [isHovered, setIsHovered] = useState(false);
 
     const handleMouseEnter = () => {
         setIsHovered(true);
-        setCursorType('view');
+        setCursorType('click'); // Changed from 'view' to 'click' to indicate interaction
         playerRef.current?.play();
     };
 
@@ -29,10 +30,11 @@ const HoverVideoCard: React.FC<HoverVideoCardProps> = ({ playbackId, title, clas
 
     return (
         <motion.div
-            className={`relative rounded-lg overflow-hidden shadow-2xl bg-black border border-gray-800 ${className}`}
+            className={`relative rounded-lg overflow-hidden shadow-2xl bg-black border border-gray-800 cursor-pointer ${className}`}
             style={style}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            onClick={onClick}
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}

@@ -3,15 +3,17 @@ import { motion } from 'framer-motion';
 import { useCursor } from '../context/CursorContext';
 import BackgroundVideo from '../components/BackgroundVideo';
 import HoverVideoCard from '../components/HoverVideoCard';
+import VideoModal from '../components/VideoModal';
 
 const DukaanSection: React.FC = () => {
   const { setCursorType } = useCursor();
+  const [selectedVideo, setSelectedVideo] = useState<{ id: string, title: string } | null>(null);
 
   // Using the real Asset IDs provided
   const ID_1 = "9aEkOhbdsVr4MU026KogdZ45y8HO3xEKVuIMAGWBwcUk";
   const ID_2 = "mEVD4pAmowT01YXUQchxROSNdxAOy9Rk7WjUFjOC700Z8";
 
-  // 3 Reels + 5 Normal Videos
+  // ... videoItems ...
   const videoItems = [
     // Reels (Vertical)
     { id: ID_1, title: "Reel 01", type: "reel" },
@@ -38,7 +40,7 @@ const DukaanSection: React.FC = () => {
   return (
     <section className="min-h-screen w-full lg:w-max lg:h-screen shrink-0 bg-[#0a0a0a] text-white relative flex flex-col lg:flex-row items-center lg:overflow-hidden pr-0 lg:pr-[10vw]">
 
-      {/* Subtle Background */}
+      {/* Subtle Background ... */}
       <div className="absolute top-0 left-0 w-full h-full opacity-[0.05] pointer-events-none fixed">
         <BackgroundVideo
           playbackId={ID_1}
@@ -46,7 +48,7 @@ const DukaanSection: React.FC = () => {
         />
       </div>
 
-      {/* Floating Title */}
+      {/* Floating Title ... */}
       <div className="relative mt-20 lg:mt-0 lg:absolute lg:top-16 lg:left-20 z-10 lg:sticky lg:left-20 text-center lg:text-left">
         <h2 className="text-6xl md:text-8xl lg:text-9xl font-black uppercase tracking-tighter text-white/10 select-none">
           Showcase
@@ -75,6 +77,7 @@ const DukaanSection: React.FC = () => {
             <HoverVideoCard
               playbackId={item.id}
               title={""}
+              onClick={() => setSelectedVideo({ id: item.id, title: item.title })}
               className={`
                   shadow-2xl border border-white/10 group-hover:border-[#FF4500]/50 transition-all duration-500
                   ${item.type === 'reel'
@@ -92,6 +95,14 @@ const DukaanSection: React.FC = () => {
         {/* End Spacer */}
         <div className="hidden lg:block w-[5vw] shrink-0" />
       </motion.div>
+
+      {/* Video Modal */}
+      <VideoModal
+        isOpen={!!selectedVideo}
+        onClose={() => setSelectedVideo(null)}
+        playbackId={selectedVideo?.id || ''}
+        title={selectedVideo?.title}
+      />
 
     </section>
   );
