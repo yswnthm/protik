@@ -6,6 +6,7 @@ const Cursor: React.FC = () => {
   const { cursorType } = useCursor();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   // Smooth mouse movement
   const springConfig = { damping: 25, stiffness: 400 };
@@ -13,7 +14,13 @@ const Cursor: React.FC = () => {
   const y = useSpring(0, springConfig);
 
   useEffect(() => {
+    const checkTouch = () => {
+      setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
+    };
+    checkTouch();
+
     const moveMouse = (e: MouseEvent) => {
+      if (isTouchDevice) return;
       setMousePosition({ x: e.clientX, y: e.clientY });
       x.set(e.clientX - 16); // Center the cursor (32px / 2)
       y.set(e.clientY - 16);
@@ -22,9 +29,10 @@ const Cursor: React.FC = () => {
 
     window.addEventListener('mousemove', moveMouse);
     return () => window.removeEventListener('mousemove', moveMouse);
-  }, [x, y, isVisible]);
+  }, [x, y, isVisible, isTouchDevice]);
 
   const variants = {
+    // ... variants ...
     default: {
       height: 12,
       width: 12,
@@ -50,9 +58,16 @@ const Cursor: React.FC = () => {
       border: '1px solid #2563EB',
       scale: 1.2,
     },
+    click: {
+      height: 48,
+      width: 48,
+      backgroundColor: 'rgba(255, 69, 0, 0.3)',
+      border: '2px solid #FF4500',
+      scale: 1,
+    }
   };
 
-  if (!isVisible) return null;
+  if (!isVisible || isTouchDevice) return null;
 
   return (
     <motion.div
