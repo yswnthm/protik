@@ -36,7 +36,7 @@ const DukaanSection: React.FC = () => {
   };
 
   return (
-    <section className="h-screen w-max shrink-0 bg-[#0a0a0a] text-white relative flex items-center overflow-hidden pr-[10vw]">
+    <section className="min-h-screen w-full lg:w-max lg:h-screen shrink-0 bg-[#0a0a0a] text-white relative flex flex-col lg:flex-row items-center lg:overflow-hidden pr-0 lg:pr-[10vw]">
 
       {/* Subtle Background */}
       <div className="absolute top-0 left-0 w-full h-full opacity-[0.05] pointer-events-none fixed">
@@ -47,14 +47,14 @@ const DukaanSection: React.FC = () => {
       </div>
 
       {/* Floating Title */}
-      <div className="absolute top-16 left-20 z-10 sticky left-20">
-        <h2 className="text-8xl md:text-9xl font-black uppercase tracking-tighter text-white/10 select-none">
+      <div className="relative mt-20 lg:mt-0 lg:absolute lg:top-16 lg:left-20 z-10 lg:sticky lg:left-20 text-center lg:text-left">
+        <h2 className="text-6xl md:text-8xl lg:text-9xl font-black uppercase tracking-tighter text-white/10 select-none">
           Showcase
         </h2>
       </div>
 
       <motion.div
-        className="relative w-full h-full flex items-center px-[15vw] gap-[6vw]"
+        className="relative w-full h-full flex flex-col lg:flex-row items-center px-4 lg:px-[15vw] py-12 lg:py-0 gap-12 lg:gap-[6vw]"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -66,7 +66,7 @@ const DukaanSection: React.FC = () => {
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="shrink-0 group flex flex-col gap-6"
+            className="shrink-0 group flex flex-col gap-6 w-full lg:w-auto items-center lg:items-start"
           >
             <span className="text-4xl md:text-6xl font-['Oswald'] font-bold text-white/20 group-hover:text-[#FF4500] transition-colors duration-300">
               0{index + 1}
@@ -78,8 +78,8 @@ const DukaanSection: React.FC = () => {
               className={`
                   shadow-2xl border border-white/10 group-hover:border-[#FF4500]/50 transition-all duration-500
                   ${item.type === 'reel'
-                  ? 'w-[25vw] md:w-[18vw] aspect-[9/16]'
-                  : 'w-[50vw] md:w-[35vw] aspect-video'}
+                  ? 'w-full aspect-[9/16] md:w-[60vw] lg:w-[18vw]'
+                  : 'w-full aspect-video md:w-[80vw] lg:w-[35vw]'}
                 `}
             />
 
@@ -90,7 +90,7 @@ const DukaanSection: React.FC = () => {
         ))}
 
         {/* End Spacer */}
-        <div className="w-[5vw] shrink-0" />
+        <div className="hidden lg:block w-[5vw] shrink-0" />
       </motion.div>
 
     </section>
