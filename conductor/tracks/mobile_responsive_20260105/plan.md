@@ -10,7 +10,7 @@
 - [x] Task: Implement Mobile Container. Create a vertical fallback for the horizontal scroll on mobile devices (e.g., `< 1024px`). [ee95b32]
 - [x] Task: Write Tests for Section Adaptations. [701d5ca]
 - [x] Task: Adapt `TitleSection` and `IntroSection` for small screens. [a6fcb27]
-- [ ] Task: Adapt `Work` sections (`BoltSection`, `DukaanSection`) for mobile grid/stack.
+- [x] Task: Adapt `Work` sections (`BoltSection`, `DukaanSection`) for mobile grid/stack. [569b7e9]
 - [ ] Task: Conductor - User Manual Verification 'Responsive Layout Implementation' (Protocol in workflow.md)
 
 ## Phase 3: Interaction & Polish
