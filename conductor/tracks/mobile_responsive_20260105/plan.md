@@ -15,6 +15,6 @@
 
 ## Phase 3: Interaction & Polish
 - [x] Task: Touch-friendly Interactions. Ensure `HoverVideoCard` and `VideoModal` respond to tap events. [e997ec3]
-- [ ] Task: Optimize Typography. Use responsive font sizes (Tailwind `text-sm` to `text-lg` breakpoints) for mobile legibility.
+- [x] Task: Optimize Typography. Use responsive font sizes (Tailwind `text-sm` to `text-lg` breakpoints) for mobile legibility. [32b9094]
 - [ ] Task: Final Polish & Performance Audit. Verify animations feel smooth on mobile browsers.
 - [ ] Task: Conductor - User Manual Verification 'Interaction & Polish' (Protocol in workflow.md)
