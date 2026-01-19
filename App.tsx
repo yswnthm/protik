@@ -10,13 +10,7 @@ const App: React.FC = () => {
         <Cursor />
         <HorizontalScrollContainer />
         
-        {/* Mobile Warning Overlay (Optional) */}
-        <div className="lg:hidden fixed inset-0 z-50 bg-black text-white flex items-center justify-center p-8 text-center">
-            <div>
-                <h1 className="text-4xl font-bold mb-4">DESKTOP EXPERIENCE ONLY</h1>
-                <p>This cinematic portfolio is designed for large screens and horizontal scrolling.</p>
-            </div>
-        </div>
+        {/* Mobile Warning Overlay Removed */}
       </main>
     </CursorProvider>
   );
