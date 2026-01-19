@@ -14,7 +14,7 @@
 - [x] Task: Conductor - User Manual Verification 'Responsive Layout Implementation' (Protocol in workflow.md) [cb09647]
 
 ## Phase 3: Interaction & Polish
-- [ ] Task: Touch-friendly Interactions. Ensure `HoverVideoCard` and `VideoModal` respond to tap events.
+- [x] Task: Touch-friendly Interactions. Ensure `HoverVideoCard` and `VideoModal` respond to tap events. [e997ec3]
 - [ ] Task: Optimize Typography. Use responsive font sizes (Tailwind `text-sm` to `text-lg` breakpoints) for mobile legibility.
 - [ ] Task: Final Polish & Performance Audit. Verify animations feel smooth on mobile browsers.
 - [ ] Task: Conductor - User Manual Verification 'Interaction & Polish' (Protocol in workflow.md)
