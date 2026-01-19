@@ -5,7 +5,7 @@ import IntroSection from '../sections/IntroSection';
 import BoltSection from '../sections/BoltSection';
 import DukaanSection from '../sections/DukaanSection';
 import StackSection from '../sections/StackSection';
-import OpenSourceSection from '../sections/OpenSourceSection';
+
 import ContactSection from '../sections/ContactSection';
 
 const HorizontalScrollContainer: React.FC = () => {
@@ -26,17 +26,17 @@ const HorizontalScrollContainer: React.FC = () => {
   });
 
   // Calculate total width based on VWs
-  // Title (100) + Intro (70) + Bolt (100) + Dukaan (250) + Stack (50) + OpenSource (80) + Contact (100) = 750vw
+  // Title (100) + Intro (70) + Bolt (100) + Dukaan (250) + Stack (50) + Contact (100) = 670vw
   // We need to move the content left by (totalWidth - viewportWidth)
-  // i.e., 750vw - 100vw = 650vw
+  // i.e., 670vw - 100vw = 570vw
 
-  const x = useTransform(smoothProgress, [0, 1], ["0%", "-650vw"]);
+  const x = useTransform(smoothProgress, [0, 1], ["0%", "-570vw"]);
 
   return (
     <>
       {/* The Ghost Container - controls the scrollable height */}
       {/* Height = Total horizontal width estimate (approx 6-7 screens worth of scroll) */}
-      <div ref={scrollRef} className="h-[800vh] w-full invisible absolute top-0 left-0 pointer-events-none"></div>
+      <div ref={scrollRef} className="h-[720vh] w-full invisible absolute top-0 left-0 pointer-events-none"></div>
 
       {/* The Fixed Viewport */}
       <div className="fixed top-0 left-0 h-screen w-screen overflow-hidden bg-[#F4F4F5]">
@@ -49,7 +49,7 @@ const HorizontalScrollContainer: React.FC = () => {
           <BoltSection />
           <DukaanSection />
           <StackSection />
-          <OpenSourceSection />
+
           <ContactSection />
         </motion.div>
       </div>

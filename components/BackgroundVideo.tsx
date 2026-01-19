@@ -39,6 +39,7 @@ const BackgroundVideo: React.FC<BackgroundVideoProps> = ({ playbackId, className
                     autoPlay="muted"
                     loop
                     muted
+                    playsInline
                     controls={false}
                     className="w-full h-full object-cover pointer-events-none"
                     style={{
