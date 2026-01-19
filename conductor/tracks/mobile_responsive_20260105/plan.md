@@ -6,8 +6,8 @@
 - [x] Task: Conductor - User Manual Verification 'Foundation & Cleanup' (Protocol in workflow.md) [5ab7e74]
 
 ## Phase 2: Responsive Layout Implementation
-- [ ] Task: Write Tests for Responsive Container. Ensure `HorizontalScrollContainer` or a new mobile container handles screen resizing.
-- [ ] Task: Implement Mobile Container. Create a vertical fallback for the horizontal scroll on mobile devices (e.g., `< 1024px`).
+- [x] Task: Write Tests for Responsive Container. Ensure `HorizontalScrollContainer` or a new mobile container handles screen resizing. [1eb622b]
+- [~] Task: Implement Mobile Container. Create a vertical fallback for the horizontal scroll on mobile devices (e.g., `< 1024px`).
 - [ ] Task: Write Tests for Section Adaptations.
 - [ ] Task: Adapt `TitleSection` and `IntroSection` for small screens.
 - [ ] Task: Adapt `Work` sections (`BoltSection`, `DukaanSection`) for mobile grid/stack.
