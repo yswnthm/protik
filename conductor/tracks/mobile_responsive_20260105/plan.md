@@ -2,7 +2,7 @@
 
 ## Phase 1: Foundation & Cleanup
 - [~] Task: Remove Desktop-Only Guardrail. Update `App.tsx` to remove the `lg:hidden` overlay.
-- [ ] Task: Audit Current Sections. Identify all components with hardcoded widths or `lg:`-only styles that break on mobile.
+- [x] Task: Audit Current Sections. Identify all components with hardcoded widths or `lg:`-only styles that break on mobile. [ccb6c52]
 - [ ] Task: Conductor - User Manual Verification 'Foundation & Cleanup' (Protocol in workflow.md)
 
 ## Phase 2: Responsive Layout Implementation
