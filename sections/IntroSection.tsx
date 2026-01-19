@@ -48,13 +48,13 @@ const IntroSection: React.FC = () => {
       </div>
 
       {/* Footer Info */}
-      <div className="flex justify-between items-end border-t border-black/10 pt-6 mt-8">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end border-t border-black/10 pt-6 mt-8 gap-4">
         <div>
           <p className="text-xs uppercase tracking-widest text-gray-500 mb-1">Location</p>
           <div className="text-xl font-bold text-black">BASED IN BANGALORE</div>
         </div>
 
-        <div className="flex flex-col items-end">
+        <div className="flex flex-col items-start md:items-end">
           <p className="text-xs uppercase tracking-widest text-gray-500 mb-1">Role</p>
           <div className="text-xl font-bold text-black">FREELANCE</div>
         </div>

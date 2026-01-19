@@ -6,9 +6,9 @@ const StackSection: React.FC = () => {
   const stack = ["DaVinci Resolve", "Figma", "Frame.io", "Audacity", "Notion"];
 
   return (
-    <section className="h-screen w-[50vw] shrink-0 bg-[#F4F4F5] border-r-2 border-black flex items-center justify-center overflow-hidden relative">
+    <section className="h-screen w-full lg:w-[50vw] shrink-0 bg-[#F4F4F5] border-r-2 border-black flex items-center justify-center overflow-hidden relative">
       <div className="absolute top-10 left-10">
-        <span className="text-[#FF4500] font-bold text-4xl font-['Oswald']">04</span>
+        <span className="text-[#FF4500] font-bold text-2xl md:text-4xl font-['Oswald']">04</span>
       </div>
 
       <div
@@ -31,7 +31,7 @@ const StackSection: React.FC = () => {
             {[...stack, ...stack, ...stack].map((tech, index) => (
               <div
                 key={index}
-                className={`text-6xl md:text-8xl font-['Oswald'] font-bold uppercase transition-colors duration-300 ${isPaused ? 'hover:text-[#FF4500] cursor-pointer' : 'text-gray-300'}`}
+                className={`text-4xl md:text-8xl font-['Oswald'] font-bold uppercase transition-colors duration-300 ${isPaused ? 'hover:text-[#FF4500] cursor-pointer' : 'text-gray-300'}`}
               >
                 {tech}
               </div>
