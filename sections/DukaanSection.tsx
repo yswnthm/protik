@@ -11,13 +11,18 @@ const DukaanSection: React.FC = () => {
   const ID_1 = "9aEkOhbdsVr4MU026KogdZ45y8HO3xEKVuIMAGWBwcUk";
   const ID_2 = "mEVD4pAmowT01YXUQchxROSNdxAOy9Rk7WjUFjOC700Z8";
 
+  // 3 Reels + 5 Normal Videos
   const videoItems = [
-    { id: ID_1, title: "Work 01: The Beginning" },
-    { id: ID_2, title: "Work 02: Rising Action" },
-    { id: ID_1, title: "Work 03: Climax" },
-    { id: ID_2, title: "Work 04: Falling Action" },
-    { id: ID_1, title: "Work 05: Resolution" },
-    { id: ID_2, title: "Work 06: Epilogue" },
+    // Reels (Vertical)
+    { id: ID_1, title: "Reel 01", type: "reel" },
+    { id: ID_2, title: "Reel 02", type: "reel" },
+    { id: ID_1, title: "Reel 03", type: "reel" },
+    // Normal (Horizontal)
+    { id: ID_2, title: "Work 04: Falling Action", type: "normal" },
+    { id: ID_1, title: "Work 05: Resolution", type: "normal" },
+    { id: ID_2, title: "Work 06: Epilogue", type: "normal" },
+    { id: ID_1, title: "Work 07: Finale", type: "normal" },
+    { id: ID_2, title: "Work 08: Credits", type: "normal" },
   ];
 
   const containerVariants = {
@@ -25,31 +30,31 @@ const DukaanSection: React.FC = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
+        staggerChildren: 0.15
       }
     }
   };
 
   return (
-    <section className="h-screen w-[300vw] shrink-0 bg-[#0a0a0a] text-white relative flex items-center overflow-hidden">
+    <section className="h-screen w-max shrink-0 bg-[#0a0a0a] text-white relative flex items-center overflow-hidden pr-[10vw]">
 
       {/* Subtle Background */}
-      <div className="absolute top-0 left-0 w-full h-full opacity-[0.05] pointer-events-none">
+      <div className="absolute top-0 left-0 w-full h-full opacity-[0.05] pointer-events-none fixed">
         <BackgroundVideo
           playbackId={ID_1}
           className="w-full h-full object-cover grayscale"
         />
       </div>
 
-      {/* Floating Title - Stays fixed roughly to the beginning of the section visually */}
-      <div className="absolute top-16 left-20 z-10">
+      {/* Floating Title */}
+      <div className="absolute top-16 left-20 z-10 sticky left-20">
         <h2 className="text-8xl md:text-9xl font-black uppercase tracking-tighter text-white/10 select-none">
           Showcase
         </h2>
       </div>
 
       <motion.div
-        className="relative w-full h-full flex items-center px-[15vw] gap-[8vw]"
+        className="relative w-full h-full flex items-center px-[15vw] gap-[6vw]"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -60,27 +65,32 @@ const DukaanSection: React.FC = () => {
             key={index}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
-            className="shrink-0 group"
+            transition={{ duration: 0.6 }}
+            className="shrink-0 group flex flex-col gap-6"
           >
-            <div className="flex flex-col gap-6">
-              <span className="text-6xl font-['Oswald'] font-bold text-white/20 group-hover:text-[#FF4500] transition-colors duration-300">
-                0{index + 1}
-              </span>
-              <HoverVideoCard
-                playbackId={item.id}
-                title={""} // Title handled below manually for style
-                className="w-[50vw] md:w-[35vw] aspect-video shadow-2xl border border-white/10 group-hover:border-[#FF4500]/50 transition-all duration-500"
-              />
-              <h3 className="text-2xl font-bold uppercase tracking-wide group-hover:text-[#FF4500] transition-colors duration-300">
-                {item.title}
-              </h3>
-            </div>
+            <span className="text-4xl md:text-6xl font-['Oswald'] font-bold text-white/20 group-hover:text-[#FF4500] transition-colors duration-300">
+              0{index + 1}
+            </span>
+
+            <HoverVideoCard
+              playbackId={item.id}
+              title={""}
+              className={`
+                  shadow-2xl border border-white/10 group-hover:border-[#FF4500]/50 transition-all duration-500
+                  ${item.type === 'reel'
+                  ? 'w-[25vw] md:w-[18vw] aspect-[9/16]'
+                  : 'w-[50vw] md:w-[35vw] aspect-video'}
+                `}
+            />
+
+            <h3 className="text-xl md:text-2xl font-bold uppercase tracking-wide group-hover:text-[#FF4500] transition-colors duration-300">
+              {item.title}
+            </h3>
           </motion.div>
         ))}
 
         {/* End Spacer */}
-        <div className="w-[10vw] shrink-0" />
+        <div className="w-[5vw] shrink-0" />
       </motion.div>
 
     </section>
