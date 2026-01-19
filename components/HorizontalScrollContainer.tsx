@@ -10,6 +10,37 @@ import ContactSection from '../sections/ContactSection';
 
 const HorizontalScrollContainer: React.FC = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [isDesktop, setIsDesktop] = useState(true);
+
+  useEffect(() => {
+    const checkDesktop = () => {
+      setIsDesktop(window.matchMedia('(min-width: 1024px)').matches);
+    };
+    // Initial check
+    checkDesktop();
+    
+    // Listener
+    const mediaQuery = window.matchMedia('(min-width: 1024px)');
+    // Modern browsers support addEventListener on MediaQueryList, but Safari < 14 uses addListener
+    // We'll use the 'change' event which is standard
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    
+    // Safer to just use resize for broader support if needed, but matchMedia listener is better
+    try {
+        mediaQuery.addEventListener('change', handler);
+    } catch (e) {
+        // Fallback for older environments
+        mediaQuery.addListener(handler);
+    }
+
+    return () => {
+        try {
+            mediaQuery.removeEventListener('change', handler);
+        } catch (e) {
+            mediaQuery.removeListener(handler);
+        }
+    };
+  }, []);
 
   // We need to know the total width of the content to set the height of the scroll container
   // A simple way is to estimate or use a large number, but dynamic calculation is better.
@@ -31,6 +62,19 @@ const HorizontalScrollContainer: React.FC = () => {
   // i.e., 870vw - 100vw = 770vw
 
   const x = useTransform(smoothProgress, [0, 1], ["0%", "-770vw"]);
+
+  if (!isDesktop) {
+    return (
+      <div className="flex flex-col w-full min-h-screen bg-[#F4F4F5] overflow-x-hidden">
+          <TitleSection />
+          <IntroSection />
+          <BoltSection />
+          <DukaanSection />
+          <StackSection />
+          <ContactSection />
+      </div>
+    );
+  }
 
   return (
     <>
