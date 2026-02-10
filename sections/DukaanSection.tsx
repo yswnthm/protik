@@ -7,24 +7,24 @@ import VideoModal from '../components/VideoModal';
 
 const DukaanSection: React.FC = () => {
   const { setCursorType } = useCursor();
-  const [selectedVideo, setSelectedVideo] = useState<{ id: string, title: string } | null>(null);
+  const [selectedVideo, setSelectedVideo] = useState<{ src: string, title: string } | null>(null);
 
-  // Using the real Asset IDs provided
-  const ID_1 = "9aEkOhbdsVr4MU026KogdZ45y8HO3xEKVuIMAGWBwcUk";
-  const ID_2 = "mEVD4pAmowT01YXUQchxROSNdxAOy9Rk7WjUFjOC700Z8";
+  // Placeholder source - change this to update all placeholders
+  const PLACEHOLDER_SRC = "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4";
 
-  // ... videoItems ...
+  // Local assets from public/Reels and public/Videos
   const videoItems = [
     // Reels (Vertical)
-    { id: ID_1, title: "Reel 01", type: "reel" },
-    { id: ID_2, title: "Reel 02", type: "reel" },
-    { id: ID_1, title: "Reel 03", type: "reel" },
+    { src: PLACEHOLDER_SRC, title: "Placeholder Reel 01", type: "reel" },
+    { src: PLACEHOLDER_SRC, title: "Placeholder Reel 02", type: "reel" },
+    { src: PLACEHOLDER_SRC, title: "Placeholder Reel 03", type: "reel" },
+    { src: PLACEHOLDER_SRC, title: "Placeholder Reel 04", type: "reel" },
     // Normal (Horizontal)
-    { id: ID_2, title: "Work 04: Falling Action", type: "normal" },
-    { id: ID_1, title: "Work 05: Resolution", type: "normal" },
-    { id: ID_2, title: "Work 06: Epilogue", type: "normal" },
-    { id: ID_1, title: "Work 07: Finale", type: "normal" },
-    { id: ID_2, title: "Work 08: Credits", type: "normal" },
+    { src: PLACEHOLDER_SRC, title: "Placeholder Work 04", type: "normal" },
+    { src: PLACEHOLDER_SRC, title: "Placeholder Work 05", type: "normal" },
+    { src: PLACEHOLDER_SRC, title: "Placeholder Work 06", type: "normal" },
+    { src: PLACEHOLDER_SRC, title: "Placeholder Work 07", type: "normal" },
+    { src: PLACEHOLDER_SRC, title: "Placeholder Work 08", type: "normal" },
   ];
 
   const containerVariants = {
@@ -43,7 +43,7 @@ const DukaanSection: React.FC = () => {
       {/* Subtle Background ... */}
       <div className="absolute top-0 left-0 w-full h-full opacity-[0.05] pointer-events-none fixed">
         <BackgroundVideo
-          playbackId={ID_1}
+          src={PLACEHOLDER_SRC} // Use the online placeholder
           className="w-full h-full object-cover grayscale"
         />
       </div>
@@ -75,9 +75,10 @@ const DukaanSection: React.FC = () => {
             </span>
 
             <HoverVideoCard
-              playbackId={item.id}
+              playbackId="" // Not used for local items
+              src={item.src}
               title={""}
-              onClick={() => setSelectedVideo({ id: item.id, title: item.title })}
+              onClick={() => setSelectedVideo({ src: item.src, title: item.title })}
               className={`
                   shadow-2xl border border-white/10 group-hover:border-[#FF4500]/50 transition-all duration-500
                   ${item.type === 'reel'
@@ -100,7 +101,8 @@ const DukaanSection: React.FC = () => {
       <VideoModal
         isOpen={!!selectedVideo}
         onClose={() => setSelectedVideo(null)}
-        playbackId={selectedVideo?.id || ''}
+        playbackId="" // Not used for local
+        src={selectedVideo?.src}
         title={selectedVideo?.title}
       />
 

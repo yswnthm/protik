@@ -4,12 +4,13 @@ import { motion } from 'framer-motion';
 import { useCursor } from '../context/CursorContext';
 
 interface BackgroundVideoProps {
-    playbackId: string;
+    playbackId?: string;
+    src?: string;
     className?: string;
     onClick?: () => void;
 }
 
-const BackgroundVideo: React.FC<BackgroundVideoProps> = ({ playbackId, className, onClick }) => {
+const BackgroundVideo: React.FC<BackgroundVideoProps> = ({ playbackId, src, className, onClick }) => {
     const { setCursorType } = useCursor();
 
     return (
@@ -33,21 +34,32 @@ const BackgroundVideo: React.FC<BackgroundVideoProps> = ({ playbackId, className
 
             {/* Ambient Looping Video */}
             <div className="w-full h-full relative">
-                <MuxPlayer
-                    streamType="on-demand"
-                    playbackId={playbackId}
-                    autoPlay="muted"
-                    loop
-                    muted
-                    playsInline
-                    controls={false}
-                    className="w-full h-full object-cover pointer-events-none"
-                    style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover' // Force cover behavior 
-                    }}
-                />
+                {src ? (
+                    <video
+                        src={src}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="w-full h-full object-cover pointer-events-none"
+                    />
+                ) : (
+                    <MuxPlayer
+                        streamType="on-demand"
+                        playbackId={playbackId}
+                        autoPlay="muted"
+                        loop
+                        muted
+                        playsInline
+                        controls={false}
+                        className="w-full h-full object-cover pointer-events-none"
+                        style={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover'
+                        }}
+                    />
+                )}
             </div>
         </div>
     );

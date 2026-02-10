@@ -11,13 +11,13 @@ const ContactSection: React.FC = () => {
     <section className="h-screen w-full lg:w-screen shrink-0 bg-[#FF4500] text-white flex flex-col justify-center items-center relative overflow-hidden">
 
       <motion.a
-        href="mailto:dasprotik485@gmail.com"
+        href="mailto:hello@solicate.in"
         className="group relative flex items-center gap-4 md:gap-8"
         onMouseEnter={() => setCursorType('link')}
         onMouseLeave={() => setCursorType('default')}
       >
         <h2 className="text-6xl md:text-[12vw] font-['Oswald'] font-bold uppercase leading-none group-hover:-skew-x-12 transition-transform duration-500 origin-left will-change-transform">
-          Email Me
+          Contact Us
         </h2>
         <motion.span
           className="text-4xl md:text-[10vw] font-bold"
@@ -29,8 +29,8 @@ const ContactSection: React.FC = () => {
       </motion.a>
 
       <div className="absolute bottom-10 w-full px-8 md:px-12 flex flex-col md:flex-row items-center justify-between gap-4 text-lg md:text-xl font-bold uppercase tracking-widest">
-        <a href="mailto:dasprotik485@gmail.com" className="hover:underline">Mail</a>
-        <a href="https://instagram.com/editorprotik" target="_blank" rel="noopener noreferrer" className="hover:underline">Instagram</a>
+        <a href="mailto:hello@solicate.in" className="hover:underline">Mail</a>
+        <a href="https://solicate.in" target="_blank" rel="noopener noreferrer" className="hover:underline">Website</a>
         <a href="/" className="hover:underline">Home</a>
       </div>
 

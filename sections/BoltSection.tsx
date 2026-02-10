@@ -5,6 +5,8 @@ import BackgroundVideo from '../components/BackgroundVideo';
 const BoltSection: React.FC = () => {
 
   // Real Asset ID provided by user
+  // NOTE: This Mux asset is hosted on the client's account.
+  // If access is revoked, replace this with a local video file in public/ or a new Mux asset.
   const MUX_PLAYBACK_ID = "5dY00pJUOdkxS8LyzKKYWfvr4QVPBRM00tcB800ew5A2LM";
 
   return (

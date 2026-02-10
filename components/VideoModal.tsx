@@ -7,11 +7,12 @@ import { useCursor } from '../context/CursorContext';
 interface VideoModalProps {
   isOpen: boolean;
   onClose: () => void;
-  playbackId: string;
+  playbackId?: string;
+  src?: string;
   title?: string;
 }
 
-const VideoModal: React.FC<VideoModalProps> = ({ isOpen, onClose, playbackId, title }) => {
+const VideoModal: React.FC<VideoModalProps> = ({ isOpen, onClose, playbackId, src, title }) => {
   const { setCursorType } = useCursor();
 
   // Lock body scroll when modal is open
@@ -54,29 +55,38 @@ const VideoModal: React.FC<VideoModalProps> = ({ isOpen, onClose, playbackId, ti
             transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             className="w-[90vw] h-[80vh] relative shadow-2xl rounded-lg overflow-hidden border border-white/10"
           >
-             <MuxPlayer
+            {src ? (
+              <video
+                src={src}
+                autoPlay
+                controls
+                className="w-full h-full object-contain bg-black"
+              />
+            ) : (
+              <MuxPlayer
                 streamType="on-demand"
                 playbackId={playbackId}
                 metadata={{
-                    video_title: title || 'Project Video',
+                  video_title: title || 'Project Video',
                 }}
                 autoPlay
                 accentColor="#EA580C"
                 className="w-full h-full object-contain bg-black"
                 style={{ aspectRatio: '16/9' }}
-            />
+              />
+            )}
           </motion.div>
 
           {/* Title Overlay (Optional) */}
           {title && (
-              <motion.div 
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.5 }}
-                className="absolute bottom-8 left-8 text-white pointer-events-none"
-              >
-                  <h3 className="text-2xl font-bold font-['Oswald'] uppercase tracking-wide">{title}</h3>
-              </motion.div>
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              className="absolute bottom-8 left-8 text-white pointer-events-none"
+            >
+              <h3 className="text-2xl font-bold font-['Oswald'] uppercase tracking-wide">{title}</h3>
+            </motion.div>
           )}
 
         </motion.div>

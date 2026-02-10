@@ -4,28 +4,32 @@ import { motion } from 'framer-motion';
 import { useCursor } from '../context/CursorContext';
 
 interface HoverVideoCardProps {
-    playbackId: string;
+    playbackId?: string;
+    src?: string;
     title: string;
     className?: string;
     style?: React.CSSProperties;
     onClick?: () => void;
 }
 
-const HoverVideoCard: React.FC<HoverVideoCardProps> = ({ playbackId, title, className, style, onClick }) => {
+const HoverVideoCard: React.FC<HoverVideoCardProps> = ({ playbackId, src, title, className, style, onClick }) => {
     const { setCursorType } = useCursor();
     const playerRef = useRef<MuxPlayerRefAttributes>(null);
+    const videoRef = useRef<HTMLVideoElement>(null);
     const [isHovered, setIsHovered] = useState(false);
 
     const handleMouseEnter = () => {
         setIsHovered(true);
         setCursorType('click'); // Changed from 'view' to 'click' to indicate interaction
         playerRef.current?.play();
+        videoRef.current?.play();
     };
 
     const handleMouseLeave = () => {
         setIsHovered(false);
         setCursorType('default');
         playerRef.current?.pause();
+        videoRef.current?.pause();
     };
 
     return (
@@ -40,21 +44,32 @@ const HoverVideoCard: React.FC<HoverVideoCardProps> = ({ playbackId, title, clas
             transition={{ duration: 0.5 }}
         >
             <div className="w-full h-full relative">
-                <MuxPlayer
-                    ref={playerRef}
-                    streamType="on-demand"
-                    playbackId={playbackId}
-                    muted
-                    loop
-                    controls={false}
-                    className="w-full h-full object-cover"
-                    style={{
-                        aspectRatio: '16/9',
-                        // @ts-ignore - Mux custom properties
-                        '--controls': 'none',
-                        '--media-controls': 'none',
-                    }}
-                />
+                {src ? (
+                    <video
+                        ref={videoRef}
+                        src={src}
+                        loop
+                        muted
+                        playsInline
+                        className="w-full h-full object-cover"
+                    />
+                ) : (
+                    <MuxPlayer
+                        ref={playerRef}
+                        streamType="on-demand"
+                        playbackId={playbackId}
+                        muted
+                        loop
+                        controls={false}
+                        className="w-full h-full object-cover"
+                        style={{
+                            aspectRatio: '16/9',
+                            // @ts-ignore - Mux custom properties
+                            '--controls': 'none',
+                            '--media-controls': 'none',
+                        }}
+                    />
+                )}
 
                 {/* Overlay Title */}
                 <motion.div
